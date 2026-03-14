@@ -27,9 +27,7 @@ describe("Glimmer — renaming elements", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerElementNode", { tag: "OldWidget" })
-      .replaceWith("<NewWidget />");
+    root.find("GlimmerElementNode", { tag: "OldWidget" }).replaceWith("<NewWidget />");
     expect(root.toSource()).toContain("<NewWidget />");
     expect(root.toSource()).not.toContain("OldWidget");
   });
@@ -55,9 +53,7 @@ describe("Glimmer — renaming elements", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerElementNode", { tag: "OldBody" })
-      .replaceWith("<NewBody>content</NewBody>");
+    root.find("GlimmerElementNode", { tag: "OldBody" }).replaceWith("<NewBody>content</NewBody>");
     const output = root.toSource();
     expect(output).toContain("<Header />");
     expect(output).toContain("<NewBody>content</NewBody>");
@@ -96,9 +92,7 @@ describe("Glimmer — renaming named blocks", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerElementNode", { tag: ":oldBody" })
-      .replaceWith("<:content>Body</:content>");
+    root.find("GlimmerElementNode", { tag: ":oldBody" }).replaceWith("<:content>Body</:content>");
     const output = root.toSource();
     expect(output).toContain("<:header>Header</:header>");
     expect(output).toContain("<:content>Body</:content>");
@@ -116,9 +110,7 @@ describe("Glimmer — renaming arguments", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerAttrNode", { name: "@oldArg" })
-      .replaceWith("@newArg={{this.value}}");
+    root.find("GlimmerAttrNode", { name: "@oldArg" }).replaceWith("@newArg={{this.value}}");
     expect(root.toSource()).toContain("@newArg={{this.value}}");
     expect(root.toSource()).not.toContain("@oldArg");
   });
@@ -129,9 +121,7 @@ describe("Glimmer — renaming arguments", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerAttrNode", { name: "@oldProp" })
-      .replaceWith("@newProp={{this.data}}");
+    root.find("GlimmerAttrNode", { name: "@oldProp" }).replaceWith("@newProp={{this.data}}");
     const output = root.toSource();
     expect(output).toContain("@title={{this.title}}");
     expect(output).toContain("@newProp={{this.data}}");
@@ -145,9 +135,7 @@ describe("Glimmer — renaming arguments", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerAttrNode", { name: "@oldType" })
-      .replaceWith('@type="text"');
+    root.find("GlimmerAttrNode", { name: "@oldType" }).replaceWith('@type="text"');
     expect(root.toSource()).toContain('@type="text"');
     expect(root.toSource()).not.toContain("@oldType");
   });
@@ -168,14 +156,12 @@ export default class Page extends Component {
 }
 `;
     const root = j(source, { filePath: "page.gjs" });
-    root
-      .find("GlimmerElementNode", { tag: "OldCard" })
-      .replaceWith(
-        `<NewCard>
+    root.find("GlimmerElementNode", { tag: "OldCard" }).replaceWith(
+      `<NewCard>
       <:header>{{this.title}}</:header>
       <:body>Card body content</:body>
     </NewCard>`,
-      );
+    );
     const output = root.toSource();
     expect(output).toContain("<NewCard>");
     expect(output).toContain("<:header>{{this.title}}</:header>");
@@ -192,14 +178,12 @@ export default class Page extends Component {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    root
-      .find("GlimmerElementNode", { tag: "SimpleButton" })
-      .replaceWith(
-        `<FancyButton>
+    root.find("GlimmerElementNode", { tag: "SimpleButton" }).replaceWith(
+      `<FancyButton>
       <:icon><Icon @name="star" /></:icon>
       <:label>{{this.label}}</:label>
     </FancyButton>`,
-      );
+    );
     const output = root.toSource();
     expect(output).toContain("<FancyButton>");
     expect(output).toContain("<:icon>");
@@ -312,7 +296,7 @@ export default class MyPage extends Component<Signature> {
     const root = j(source, { filePath: "page.gts" });
     root
       .find("GlimmerElementNode", { tag: "OldWidget" })
-      .replaceWith('<NewWidget @name={{@name}} />');
+      .replaceWith("<NewWidget @name={{@name}} />");
     const output = root.toSource();
     expect(output).toContain("<NewWidget");
     expect(output).not.toContain("OldWidget");
@@ -335,9 +319,7 @@ export default class MyComponent extends Component<Signature> {
 }
 `;
     const root = j(source, { filePath: "component.gts" });
-    root
-      .find("GlimmerAttrNode", { name: "@oldProp" })
-      .replaceWith("@newProp={{@oldProp}}");
+    root.find("GlimmerAttrNode", { name: "@oldProp" }).replaceWith("@newProp={{@oldProp}}");
     const output = root.toSource();
     expect(output).toContain("@newProp={{@oldProp}}");
     expect(output).toContain("interface Signature");

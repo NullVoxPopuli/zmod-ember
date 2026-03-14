@@ -13,8 +13,8 @@ pnpm add zmod-ember zmod @babel/core
 ### With `z.withParser()`
 
 ```ts
-import { z } from 'zmod';
-import { emberParser } from 'zmod-ember';
+import { z } from "zmod";
+import { emberParser } from "zmod-ember";
 
 const j = z.withParser(emberParser);
 
@@ -27,10 +27,9 @@ export default class OldComponent extends Component {
 }
 `;
 
-const root = j(source, { filePath: 'my-component.gjs' });
+const root = j(source, { filePath: "my-component.gjs" });
 
-root.find(j.Identifier, { name: 'OldComponent' })
-    .replaceWith('NewComponent');
+root.find(j.Identifier, { name: "OldComponent" }).replaceWith("NewComponent");
 
 console.log(root.toSource());
 ```
@@ -38,8 +37,8 @@ console.log(root.toSource());
 ### As a transform module
 
 ```ts
-import type { Transform } from 'zmod';
-import { emberParser } from 'zmod-ember';
+import type { Transform } from "zmod";
+import { emberParser } from "zmod-ember";
 
 // Export the parser so zmod's `run()` uses it for all files
 export const parser = emberParser;
@@ -47,8 +46,7 @@ export const parser = emberParser;
 const transform: Transform = ({ source, path }, { z }) => {
   const root = z(source, { filePath: path });
 
-  root.find(z.Identifier, { name: 'OldName' })
-      .replaceWith('NewName');
+  root.find(z.Identifier, { name: "OldName" }).replaceWith("NewName");
 
   return root.toSource();
 };
@@ -59,11 +57,11 @@ export default transform;
 ### Running transforms
 
 ```ts
-import { run } from 'zmod';
-import transform from './my-transform.js';
+import { run } from "zmod";
+import transform from "./my-transform.js";
 
 const result = await run(transform, {
-  include: ['src/**/*.gjs', 'src/**/*.gts'],
+  include: ["src/**/*.gjs", "src/**/*.gts"],
 });
 
 console.log(result.files);
@@ -81,32 +79,28 @@ Pass `{ filePath: 'name.gjs' }` or `{ filePath: 'name.gts' }` in the parse optio
 > **Note:** Use zmod's default parser for plain `.js` and `.ts` files — `zmod-ember` is only needed for `.gjs` and `.gts` files that contain `<template>` tags. For codemods that target both standard JS/TS and Ember template files, use `zmod-ember` only for the `.gjs`/`.gts` files:
 >
 > ```ts
-> import { z, run } from 'zmod';
-> import { emberParser } from 'zmod-ember';
+> import { z, run } from "zmod";
+> import { emberParser } from "zmod-ember";
 >
 > // For .gjs/.gts files, use the ember parser
 > const gjsTransform = ({ source, path }, { z }) => {
 >   return z(source, { filePath: path })
->     .find(z.Identifier, { name: 'OldName' })
->     .replaceWith('NewName')
+>     .find(z.Identifier, { name: "OldName" })
+>     .replaceWith("NewName")
 >     .toSource();
 > };
 > gjsTransform.parser = emberParser;
 >
 > // For .js/.ts files, use zmod's default parser (no parser export needed)
 > const jsTransform = ({ source }, { z }) => {
->   return z(source)
->     .find(z.Identifier, { name: 'OldName' })
->     .replaceWith('NewName')
->     .toSource();
+>   return z(source).find(z.Identifier, { name: "OldName" }).replaceWith("NewName").toSource();
 > };
 > ```
 
 ## Peer dependencies
 
-| Package | Required | Notes |
-|---------|----------|-------|
-| `zmod` | Yes | Core codemod toolkit |
-| `@babel/core` | Yes | Required by ember-eslint-parser |
+| Package                     | Required         | Notes                                  |
+| --------------------------- | ---------------- | -------------------------------------- |
+| `zmod`                      | Yes              | Core codemod toolkit                   |
+| `@babel/core`               | Yes              | Required by ember-eslint-parser        |
 | `@typescript-eslint/parser` | For `.gts` files | Required to parse TypeScript templates |
-

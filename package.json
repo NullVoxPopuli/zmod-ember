@@ -3,20 +3,25 @@
   "version": "0.0.0",
   "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-eslint-parser",
   "keywords": [
-    "zmod",
+    "codemod",
     "ember",
     "gjs",
+    "glimmer",
     "gts",
-    "codemod",
     "parser",
-    "glimmer"
+    "zmod"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NullVoxPopuli/zmod-ember.git"
   },
-  "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -25,17 +30,27 @@
       }
     }
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsc",
+    "lint": "oxlint && pnpm format:check",
+    "lint:fix": "oxlint --fix && oxfmt",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "test": "vitest run"
   },
   "dependencies": {
     "ember-eslint-parser": "^0.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@glimmer/env": "^0.1.7",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0",
+    "typescript": "^5.3.3",
+    "vitest": "^3.2.1",
+    "zmod": "^0.3.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.23.6",
@@ -47,16 +62,8 @@
       "optional": true
     }
   },
-  "devDependencies": {
-    "@babel/core": "^7.23.6",
-    "@glimmer/env": "^0.1.7",
-    "@types/node": "^25.5.0",
-    "@typescript-eslint/parser": "^8.57.0",
-    "typescript": "^5.3.3",
-    "vitest": "^3.2.1",
-    "zmod": "^0.3.1"
-  },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.32.1"
 }

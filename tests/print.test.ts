@@ -10,18 +10,12 @@ describe("emberParser.print()", () => {
   });
 
   it("prints a CallExpression node", () => {
-    const node = z.callExpression(z.identifier("foo"), [
-      z.identifier("a"),
-      z.identifier("b"),
-    ]);
+    const node = z.callExpression(z.identifier("foo"), [z.identifier("a"), z.identifier("b")]);
     expect(j.print(node)).toBe("foo(a, b)");
   });
 
   it("prints a MemberExpression node", () => {
-    const node = z.memberExpression(
-      z.identifier("obj"),
-      z.identifier("method"),
-    );
+    const node = z.memberExpression(z.identifier("obj"), z.identifier("method"));
     expect(j.print(node)).toBe("obj.method");
   });
 

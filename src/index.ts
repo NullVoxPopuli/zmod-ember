@@ -352,8 +352,8 @@ function printNode(node: any): string {
       const specs = (node.specifiers ?? []).map(printNode);
       const source = printNode(node.source);
       if (specs.length === 0) return `import ${source};`;
-      const defaultSpec = specs.find((_: any, i: number) =>
-        node.specifiers[i].type === "ImportDefaultSpecifier",
+      const defaultSpec = specs.find(
+        (_: any, i: number) => node.specifiers[i].type === "ImportDefaultSpecifier",
       );
       const namedSpecs = node.specifiers
         .filter((s: any) => s.type === "ImportSpecifier")
