@@ -78,6 +78,30 @@ The adapter wraps `ember-eslint-parser`'s `parseForESLint()` to implement zmod's
 
 Pass `{ filePath: 'name.gjs' }` or `{ filePath: 'name.gts' }` in the parse options to control the file type. `.gts` files require `@typescript-eslint/parser` to be installed.
 
+> **Note:** Use zmod's default parser for plain `.js` and `.ts` files — `zmod-ember` is only needed for `.gjs` and `.gts` files that contain `<template>` tags. For codemods that target both standard JS/TS and Ember template files, use `zmod-ember` only for the `.gjs`/`.gts` files:
+>
+> ```ts
+> import { z, run } from 'zmod';
+> import { emberParser } from 'zmod-ember';
+>
+> // For .gjs/.gts files, use the ember parser
+> const gjsTransform = ({ source, path }, { z }) => {
+>   return z(source, { filePath: path })
+>     .find(z.Identifier, { name: 'OldName' })
+>     .replaceWith('NewName')
+>     .toSource();
+> };
+> gjsTransform.parser = emberParser;
+>
+> // For .js/.ts files, use zmod's default parser (no parser export needed)
+> const jsTransform = ({ source }, { z }) => {
+>   return z(source)
+>     .find(z.Identifier, { name: 'OldName' })
+>     .replaceWith('NewName')
+>     .toSource();
+> };
+> ```
+
 ## Peer dependencies
 
 | Package | Required | Notes |
