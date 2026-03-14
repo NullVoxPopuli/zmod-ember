@@ -1,0 +1,61 @@
+{
+  "name": "zmod-ember",
+  "version": "0.0.0",
+  "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-eslint-parser",
+  "keywords": [
+    "zmod",
+    "ember",
+    "gjs",
+    "gts",
+    "codemod",
+    "parser",
+    "glimmer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NullVoxPopuli/zmod-ember.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ember-eslint-parser": "^0.7.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.23.6",
+    "zmod": "^0.3.1"
+  },
+  "peerDependenciesMeta": {
+    "@babel/core": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@glimmer/env": "^0.1.7",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "typescript": "^5.3.3",
+    "vitest": "^3.2.1",
+    "zmod": "^0.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
