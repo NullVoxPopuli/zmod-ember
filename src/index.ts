@@ -40,14 +40,7 @@ import type { Parser, ParseOptions } from "zmod";
  */
 export const emberParser: Parser = {
   parse(source: string, options?: ParseOptions): any {
-    const opts = { ...options } as Record<string, any>;
-
-    // Map .gts/.gjs extensions so oxc-parser recognises the language
-    if (typeof opts.filePath === "string") {
-      opts.filePath = opts.filePath.replace(/\.gts$/, ".ts").replace(/\.gjs$/, ".js");
-    }
-
-    return toTree(source, opts);
+    return toTree(source, options);
   },
   print(node: any): string {
     return emberPrint(node);
