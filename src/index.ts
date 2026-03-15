@@ -40,7 +40,7 @@ import type { Parser, ParseOptions } from "zmod";
  */
 export const emberParser: Parser = {
   parse(source: string, options?: ParseOptions): any {
-    return toTree(source, options);
+    return toTree(source, options as any);
   },
   print(node: any): string {
     return emberPrint(node);
