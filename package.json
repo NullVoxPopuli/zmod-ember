@@ -32,10 +32,10 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "oxlint && pnpm format:check",
-    "lint:fix": "oxlint --fix && oxfmt",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
+    "lint": "oxlint && pnpm format:check",
+    "lint:fix": "oxlint --fix && oxfmt",
     "test": "vitest run"
   },
   "dependencies": {
@@ -45,6 +45,7 @@
     "@types/node": "^25.5.0",
     "oxfmt": "^0.40.0",
     "oxlint": "^1.55.0",
+    "release-plan": "^0.17.4",
     "typescript": "^5.3.3",
     "vitest": "^3.2.1",
     "zmod": "^0.3.1"
