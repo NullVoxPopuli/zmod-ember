@@ -204,9 +204,9 @@ describe("Glimmer — finding and filtering nodes", () => {
 </template>
 `;
     const root = j(source, { filePath: "test.gjs" });
-    // The outer `template` tag is also a GlimmerElementNode
+    // div, MyComponent, span — the outer <template> is a GlimmerTemplate
     const elems = root.find("GlimmerElementNode");
-    expect(elems.length).toBeGreaterThanOrEqual(4);
+    expect(elems.length).toBeGreaterThanOrEqual(3);
   });
 
   it("finds GlimmerElementNode by tag name", () => {

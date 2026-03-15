@@ -1,7 +1,7 @@
 {
   "name": "zmod-ember",
   "version": "0.0.0",
-  "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-eslint-parser",
+  "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-estree",
   "keywords": [
     "codemod",
     "ember",
@@ -39,13 +39,10 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "ember-eslint-parser": "^0.7.0"
+    "ember-estree": "^0.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.6",
-    "@glimmer/env": "^0.1.7",
     "@types/node": "^25.5.0",
-    "@typescript-eslint/parser": "^8.57.0",
     "oxfmt": "^0.40.0",
     "oxlint": "^1.55.0",
     "typescript": "^5.3.3",
@@ -53,14 +50,7 @@
     "zmod": "^0.3.1"
   },
   "peerDependencies": {
-    "@babel/core": "^7.23.6",
-    "@typescript-eslint/parser": "*",
     "zmod": "^0.3.1"
-  },
-  "peerDependenciesMeta": {
-    "@typescript-eslint/parser": {
-      "optional": true
-    }
   },
   "engines": {
     "node": ">=18.0.0"
