@@ -1,0 +1,59 @@
+{
+  "name": "zmod-ember",
+  "version": "0.0.0",
+  "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-estree",
+  "keywords": [
+    "codemod",
+    "ember",
+    "gjs",
+    "glimmer",
+    "gts",
+    "parser",
+    "zmod"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NullVoxPopuli/zmod-ember.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "oxlint && pnpm format:check",
+    "lint:fix": "oxlint --fix && oxfmt",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ember-estree": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0",
+    "typescript": "^5.3.3",
+    "vitest": "^3.2.1",
+    "zmod": "^0.3.1"
+  },
+  "peerDependencies": {
+    "zmod": "^0.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@10.32.1"
+}

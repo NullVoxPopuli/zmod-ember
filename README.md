@@ -1,4 +1,139 @@
 # zmod-ember
 
-This repo provides an adapter for [zmod](https://github.com/NaamuKim/zmod) for ember's gjs and gts files via [ember-eslint-parser](https://github.com/ember-tooling/ember-eslint-parser/) as zmod's default parser is [oxc](https://github.com/oxc-project/oxc)-parser, which is ESTree-compatible.
+This repo provides an adapter for [zmod](https://github.com/NaamuKim/zmod) for ember's gjs and gts files via [ember-estree](https://github.com/NullVoxPopuli/ember-estree) as zmod's default parser is [oxc](https://github.com/oxc-project/oxc)-parser, which is ESTree-compatible.
 
+## Installation
+
+```bash
+pnpm add zmod-ember zmod
+```
+
+## Usage
+
+### With `z.withParser()`
+
+```ts
+import { z } from "zmod";
+import { emberParser } from "zmod-ember";
+
+const j = z.withParser(emberParser);
+
+const source = `import Component from '@glimmer/component';
+
+export default class OldComponent extends Component {
+  <template>
+    <h1>Hello {{@name}}</h1>
+  </template>
+}
+`;
+
+const root = j(source, { filePath: "my-component.gjs" });
+
+root.find(j.Identifier, { name: "OldComponent" }).replaceWith("NewComponent");
+
+console.log(root.toSource());
+```
+
+### As a transform module
+
+```ts
+import type { Transform } from "zmod";
+import { emberParser } from "zmod-ember";
+
+// Export the parser so zmod's `run()` uses it for all files
+export const parser = emberParser;
+
+const transform: Transform = ({ source, path }, { z }) => {
+  const root = z(source, { filePath: path });
+
+  root.find(z.Identifier, { name: "OldName" }).replaceWith("NewName");
+
+  return root.toSource();
+};
+
+export default transform;
+```
+
+### Operating on Glimmer nodes
+
+Glimmer template nodes are exposed as `Glimmer*`-prefixed types and can be found using string-based type queries:
+
+```ts
+import { z } from "zmod";
+import { emberParser } from "zmod-ember";
+
+const j = z.withParser(emberParser);
+
+const source = `<template>
+  <OldComponent @oldArg={{this.value}}>
+    <:header>Header</:header>
+  </OldComponent>
+</template>
+`;
+
+const root = j(source, { filePath: "component.gjs" });
+
+// Rename a component
+root.find("GlimmerElementNode", { tag: "OldComponent" }).forEach((path) => {
+  path.node.tag = "NewComponent";
+});
+
+// Rename an argument
+root.find("GlimmerAttrNode", { name: "@oldArg" }).replaceWith("@newArg={{this.value}}");
+
+// Rename a named block
+root.find("GlimmerElementNode", { tag: ":header" }).replaceWith("<:title>Header</:title>");
+
+console.log(root.toSource());
+```
+
+Other Glimmer node types you can query include `GlimmerMustacheStatement`, `GlimmerBlockStatement`, `GlimmerPathExpression`, `GlimmerTextNode`, `GlimmerElementModifierStatement`, `GlimmerSubExpression`, `GlimmerHashPair`, `GlimmerStringLiteral`, `GlimmerNumberLiteral`, and `GlimmerBlockParam`.
+
+### Running transforms
+
+```ts
+import { run } from "zmod";
+import transform from "./my-transform.js";
+
+const result = await run(transform, {
+  include: ["src/**/*.gjs", "src/**/*.gts"],
+});
+
+console.log(result.files);
+```
+
+## How it works
+
+The adapter wraps [ember-estree](https://github.com/NullVoxPopuli/ember-estree)'s `toTree()` to implement zmod's [`Parser` interface](https://github.com/NaamuKim/zmod/blob/main/packages/zmod/src/parser.ts):
+
+- **`parse(source, options)`** — Calls `toTree` and returns an ESTree-compatible AST with embedded Glimmer template nodes. All nodes are guaranteed to have `start`/`end` byte-offset properties required by zmod's span-based patching. Handles both top-level and class body `<template>` tags.
+- **`print(node)`** — Serializes AST nodes back to source code. Handles standard ESTree nodes and Glimmer template nodes (e.g., `GlimmerElementNode`, `GlimmerMustacheStatement`).
+
+Pass `{ filePath: 'name.gjs' }` or `{ filePath: 'name.gts' }` in the parse options to control the file type.
+
+> **Note:** Use zmod's default parser for plain `.js` and `.ts` files — `zmod-ember` is only needed for `.gjs` and `.gts` files that contain `<template>` tags. For codemods that target both standard JS/TS and Ember template files, use `zmod-ember` only for the `.gjs`/`.gts` files:
+>
+> ```ts
+> import { z, run } from "zmod";
+> import { emberParser } from "zmod-ember";
+>
+> // For .gjs/.gts files, use the ember parser
+> const gjsTransform = ({ source, path }, { z }) => {
+>   return z(source, { filePath: path })
+>     .find(z.Identifier, { name: "OldName" })
+>     .replaceWith("NewName")
+>     .toSource();
+> };
+> gjsTransform.parser = emberParser;
+>
+> // For .js/.ts files, use zmod's default parser (no parser export needed)
+> const jsTransform = ({ source }, { z }) => {
+>   return z(source).find(z.Identifier, { name: "OldName" }).replaceWith("NewName").toSource();
+> };
+> ```
+
+## Peer dependencies
+
+| Package | Required | Notes                |
+| ------- | -------- | -------------------- |
+| `zmod`  | Yes      | Core codemod toolkit |
