@@ -74,11 +74,9 @@ const source = `<template>
 const root = j(source, { filePath: "component.gjs" });
 
 // Rename a component
-root
-  .find("GlimmerElementNode", { tag: "OldComponent" })
-  .forEach((path) => {
-    path.node.tag = "NewComponent";
-  });
+root.find("GlimmerElementNode", { tag: "OldComponent" }).forEach((path) => {
+  path.node.tag = "NewComponent";
+});
 
 // Rename an argument
 root.find("GlimmerAttrNode", { name: "@oldArg" }).replaceWith("@newArg={{this.value}}");
