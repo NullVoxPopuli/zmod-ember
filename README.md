@@ -54,6 +54,43 @@ const transform: Transform = ({ source, path }, { z }) => {
 export default transform;
 ```
 
+### Operating on Glimmer nodes
+
+Glimmer template nodes are exposed as `Glimmer*`-prefixed types and can be found using string-based type queries:
+
+```ts
+import { z } from "zmod";
+import { emberParser } from "zmod-ember";
+
+const j = z.withParser(emberParser);
+
+const source = `<template>
+  <OldComponent @oldArg={{this.value}}>
+    <:header>Header</:header>
+  </OldComponent>
+</template>
+`;
+
+const root = j(source, { filePath: "component.gjs" });
+
+// Rename a component
+root.find("GlimmerElementNode", { tag: "OldComponent" }).replaceWith(
+  `<NewComponent @oldArg={{this.value}}>
+    <:header>Header</:header>
+  </NewComponent>`,
+);
+
+// Rename an argument
+root.find("GlimmerAttrNode", { name: "@oldArg" }).replaceWith("@newArg={{this.value}}");
+
+// Rename a named block
+root.find("GlimmerElementNode", { tag: ":header" }).replaceWith("<:title>Header</:title>");
+
+console.log(root.toSource());
+```
+
+Other Glimmer node types you can query include `GlimmerMustacheStatement`, `GlimmerBlockStatement`, `GlimmerPathExpression`, `GlimmerTextNode`, `GlimmerElementModifierStatement`, `GlimmerSubExpression`, `GlimmerHashPair`, `GlimmerStringLiteral`, `GlimmerNumberLiteral`, and `GlimmerBlockParam`.
+
 ### Running transforms
 
 ```ts
