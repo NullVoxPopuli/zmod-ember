@@ -39,7 +39,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "ember-estree": "^0.1.1"
+    "ember-estree": "^0.1.2"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",

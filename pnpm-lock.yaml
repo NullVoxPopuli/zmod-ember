@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ember-estree:
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@types/node':
         specifier: ^25.5.0
@@ -1281,8 +1281,8 @@ packages:
   electron-to-chromium@1.5.313:
     resolution: {integrity: sha512-QBMrTWEf00GXZmJyx2lbYD45jpI3TUFnNIzJ5BBc8piGUDwMPa1GV6HJWTZVvY/eiN3fSopl7NRbgGp9sZ9LTA==}
 
-  ember-estree@0.1.1:
-    resolution: {integrity: sha512-tVmeFl3/4jMNsiVsL/97dEjsd8l3T3NSLZTXZmOZoe/gIfpqUzveNmFUuswZ5QYda6Wr3t4d0BCCCo/ozf4JNQ==}
+  ember-estree@0.1.2:
+    resolution: {integrity: sha512-phifPZshRIhI+mep3mtQ1VeA5KgzZyMbiVCBn/zdYJgxmTCdCqv2Uti5qQDMvt+OSuZ+cc29/4XShHJkc5Sjzw==}
 
   ember-template-recast@6.1.5:
     resolution: {integrity: sha512-VnRN8FzEHQnw/5rCv6Wnq8MVYXbGQbFY+rEufvWV+FO/IsxMahGEud4MYWtTA2q8iG+qJFrDQefNvQ//7MI7Qw==}
@@ -2774,7 +2774,7 @@ snapshots:
 
   electron-to-chromium@1.5.313: {}
 
-  ember-estree@0.1.1:
+  ember-estree@0.1.2:
     dependencies:
       '@glimmer/syntax': 0.95.0
       content-tag-utils: 0.5.1
