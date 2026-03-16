@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "zmod-ember": {
+      "impact": "minor",
+      "oldVersion": "0.1.0",
+      "newVersion": "0.2.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./package.json"
+    }
+  },
+  "description": "## Release (2026-03-16)\n\n* zmod-ember 0.2.0 (minor)\n\n#### :rocket: Enhancement\n* `zmod-ember`\n  * [#4](https://github.com/NullVoxPopuli/zmod-ember/pull/4) Upgrade to estree 0.3 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+}
