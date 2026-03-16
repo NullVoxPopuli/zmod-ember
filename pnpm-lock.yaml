@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ember-estree:
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.3.0
+        version: 0.3.0
     devDependencies:
       '@types/node':
         specifier: ^25.5.0
@@ -1271,8 +1271,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  ember-estree@0.2.0:
-    resolution: {integrity: sha512-nwdPZDtySOQL0eItl9bE/0Y9cOcOzvzMnZA8jxuRnp8ox8cIlsMr3gCsIVBG+Px/18BFjAAsZS1/9cIjGTueNw==}
+  ember-estree@0.3.0:
+    resolution: {integrity: sha512-rlTZ6zKBC+80TvvDOaAzD2AAzJt66LOMzINvJ1L8lM81ZDksvm+sp+jfrqTK2ZqZDKbabVmcWlfbfR1jkXdUGQ==}
 
   ember-template-recast@6.1.5:
     resolution: {integrity: sha512-VnRN8FzEHQnw/5rCv6Wnq8MVYXbGQbFY+rEufvWV+FO/IsxMahGEud4MYWtTA2q8iG+qJFrDQefNvQ//7MI7Qw==}
@@ -3129,7 +3129,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  ember-estree@0.2.0:
+  ember-estree@0.3.0:
     dependencies:
       '@glimmer/syntax': 0.95.0
       content-tag: 4.1.0
