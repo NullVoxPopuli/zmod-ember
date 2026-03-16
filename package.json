@@ -1,6 +1,6 @@
 {
   "name": "zmod-ember",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "zmod parser adapter for Ember's .gjs and .gts files via ember-estree",
   "keywords": [
     "codemod",
