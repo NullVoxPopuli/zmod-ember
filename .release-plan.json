@@ -2,17 +2,21 @@
   "solution": {
     "zmod-ember": {
       "impact": "minor",
-      "oldVersion": "0.1.0",
-      "newVersion": "0.2.0",
+      "oldVersion": "0.2.0",
+      "newVersion": "0.3.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2026-03-16)\n\n* zmod-ember 0.2.0 (minor)\n\n#### :rocket: Enhancement\n* `zmod-ember`\n  * [#4](https://github.com/NullVoxPopuli/zmod-ember/pull/4) Upgrade to estree 0.3 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2026-03-19)\n\n* zmod-ember 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `zmod-ember`\n  * [#6](https://github.com/NullVoxPopuli/zmod-ember/pull/6) Upgrade ember-estree to 0.4.x ([@Copilot](https://github.com/apps/copilot-swe-agent))\n\n#### :house: Internal\n* `zmod-ember`\n  * [#5](https://github.com/NullVoxPopuli/zmod-ember/pull/5) Rename .oxfmtignore to .prettierignore ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 2\n- Copilot [Bot] ([@copilot-swe-agent](https://github.com/apps/copilot-swe-agent))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
