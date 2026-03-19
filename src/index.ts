@@ -1,4 +1,4 @@
-import { toTree, print as emberPrint, removeParentReferences } from "ember-estree";
+import { toTree, print as emberPrint } from "ember-estree";
 import type { Parser, ParseOptions } from "zmod";
 
 /**
@@ -40,12 +40,7 @@ import type { Parser, ParseOptions } from "zmod";
  */
 export const emberParser: Parser = {
   parse(source: string, options?: ParseOptions): any {
-    const ast = toTree(source, options as any);
-
-    // zmod errors with circular refs unless these are removed
-    // for codemodding, this isn't so important to retain these references
-    // its more important for linting or build transforms
-    removeParentReferences(ast);
+    const ast = toTree(source, { ...(options as any), includeParentLinks: false });
 
     return ast;
   },
