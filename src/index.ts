@@ -1,6 +1,9 @@
 import { toTree, print as emberPrint } from "ember-estree";
 import type { Parser, ParseOptions } from "zmod";
 
+export { analyze, ScopeManager, Scope, Variable, Reference, Definition } from "./scope.js";
+export type { AnalyzeOptions } from "./scope.js";
+
 /**
  * A zmod `Parser` adapter for Ember's `.gjs` and `.gts` files.
  *
