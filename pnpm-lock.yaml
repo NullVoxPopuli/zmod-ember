@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ember-estree:
-        specifier: ^0.4.2
-        version: 0.4.2
+        specifier: ^0.4.3
+        version: 0.4.3
     devDependencies:
       '@types/node':
         specifier: ^25.5.0
@@ -1196,8 +1196,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  ember-estree@0.4.2:
-    resolution: {integrity: sha512-Runf+IVY+hUhlk0QwwljhPYj0/kjza5CCRp/Hlfdk9MawKSxXQqR0WX4f2rChXAGbDIzK7JVopVaet5oIZr8tg==}
+  ember-estree@0.4.3:
+    resolution: {integrity: sha512-742Wp/Dx2g9IZFOd9+JaRTpyflptxhtdMaG7MA2nl8lZOM9zTzlD+FfT3Vx/o+CZX976ZGDBbKg/gr5WErfqxA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2895,7 +2895,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  ember-estree@0.4.2:
+  ember-estree@0.4.3:
     dependencies:
       '@glimmer/env': 0.1.7
       '@glimmer/syntax': 0.95.0
