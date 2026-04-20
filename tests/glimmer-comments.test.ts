@@ -301,6 +301,26 @@ describe("Glimmer — mixed comment types", () => {
     expect(output).toContain("<div>content</div>");
   });
 
+  it("targets short {{! }} and long {{!-- --}} mustache comments individually", () => {
+    const root = j(`<template>{{! short }}{{!-- long --}}</template>`, { filePath: "test.gjs" });
+
+    root
+      .find("GlimmerMustacheCommentStatement")
+      .filter((path) => !path.node.longForm)
+      .replaceWith("{{! updated short }}");
+
+    root
+      .find("GlimmerMustacheCommentStatement")
+      .filter((path) => path.node.longForm)
+      .replaceWith("{{!-- updated long --}}");
+
+    const output = root.toSource();
+    expect(output).toContain("{{! updated short }}");
+    expect(output).toContain("{{!-- updated long --}}");
+    expect(output).not.toContain("{{! short }}");
+    expect(output).not.toContain("{{!-- long --}}");
+  });
+
   it("handles comments inside a class-based component in .gjs", () => {
     const source = `import Component from '@glimmer/component';
 
