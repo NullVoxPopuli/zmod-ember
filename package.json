@@ -11,18 +11,12 @@
     "parser",
     "zmod"
   ],
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NullVoxPopuli/zmod-ember.git"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -31,16 +25,18 @@
       }
     }
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "prepack": "tsc",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint && pnpm format:check",
     "lint:fix": "oxlint --fix && oxfmt",
+    "prepack": "tsc",
     "test": "vitest run"
   },
   "dependencies": {
@@ -50,7 +46,7 @@
     "@types/node": "^25.5.0",
     "oxfmt": "^0.40.0",
     "oxlint": "^1.55.0",
-    "release-plan": "^0.17.4",
+    "release-plan": "^0.18.0",
     "typescript": "^5.3.3",
     "vitest": "^3.2.1",
     "zmod": "^0.3.1"
@@ -58,8 +54,12 @@
   "peerDependencies": {
     "zmod": "^0.3.1"
   },
+  "packageManager": "pnpm@10.32.1",
   "engines": {
     "node": ">=20.19.0"
   },
-  "packageManager": "pnpm@10.32.1"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
 }
