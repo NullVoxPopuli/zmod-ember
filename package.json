@@ -36,11 +36,11 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "prepack": "tsc",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint && pnpm format:check",
     "lint:fix": "oxlint --fix && oxfmt",
+    "prepack": "tsc",
     "test": "vitest run"
   },
   "dependencies": {
@@ -50,7 +50,7 @@
     "@types/node": "^25.5.0",
     "oxfmt": "^0.40.0",
     "oxlint": "^1.55.0",
-    "release-plan": "^0.17.4",
+    "release-plan": "^0.18.0",
     "typescript": "^5.3.3",
     "vitest": "^3.2.1",
     "zmod": "^0.3.1"
