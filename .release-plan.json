@@ -1,14 +1,14 @@
 {
   "solution": {
     "zmod-ember": {
-      "impact": "minor",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.3.0",
+      "impact": "patch",
+      "oldVersion": "0.3.0",
+      "newVersion": "0.3.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         },
         {
           "impact": "patch",
@@ -18,5 +18,5 @@
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2026-03-19)\n\n* zmod-ember 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `zmod-ember`\n  * [#6](https://github.com/NullVoxPopuli/zmod-ember/pull/6) Upgrade ember-estree to 0.4.x ([@Copilot](https://github.com/apps/copilot-swe-agent))\n\n#### :house: Internal\n* `zmod-ember`\n  * [#5](https://github.com/NullVoxPopuli/zmod-ember/pull/5) Rename .oxfmtignore to .prettierignore ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 2\n- Copilot [Bot] ([@copilot-swe-agent](https://github.com/apps/copilot-swe-agent))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2026-04-21)\n\n* zmod-ember 0.3.1 (patch)\n\n#### :bug: Bug Fix\n* `zmod-ember`\n  * [#10](https://github.com/NullVoxPopuli/zmod-ember/pull/10) Add tests for finding and changing Glimmer template comment content ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))\n\n#### :house: Internal\n* `zmod-ember`\n  * [#12](https://github.com/NullVoxPopuli/zmod-ember/pull/12) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 2\n- @NullVoxPopuli's reduced-access machine account for AI usage ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
