@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2026-04-21)
+
+* zmod-ember 0.3.1 (patch)
+
+#### :bug: Bug Fix
+* `zmod-ember`
+  * [#10](https://github.com/NullVoxPopuli/zmod-ember/pull/10) Add tests for finding and changing Glimmer template comment content ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))
+
+#### :house: Internal
+* `zmod-ember`
+  * [#12](https://github.com/NullVoxPopuli/zmod-ember/pull/12) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 2
+- @NullVoxPopuli's reduced-access machine account for AI usage ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2026-03-19)
 
 * zmod-ember 0.3.0 (minor)
