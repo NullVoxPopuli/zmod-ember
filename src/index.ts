@@ -40,7 +40,18 @@ import type { Parser, ParseOptions } from "zmod";
  */
 export const emberParser: Parser = {
   parse(source: string, options?: ParseOptions): any {
-    const ast = toTree(source, { ...(options as any), includeParentLinks: false });
+    const ast = toTree(source, {
+      ...(options as any),
+      includeParentLinks: false,
+      // zmod walks the tree via visitor keys; keep Glimmer comment nodes
+      // in GlimmerTemplate.body (with semantic types + longForm) so
+      // `root.find("GlimmerCommentStatement")` / `root.find("GlimmerMustacheCommentStatement")`
+      // can reach them. Without this opt-in, ember-estree's default
+      // removes them from body and surfaces only Block-typed clones
+      // in `ast.comments` — the right contract for ESLint consumers,
+      // but invisible to zmod's tree-walker.
+      keepCommentsInBody: true,
+    });
 
     return ast;
   },
