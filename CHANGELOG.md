@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-05-08)
+
+* zmod-ember 0.3.2 (patch)
+
+#### :bug: Bug Fix
+* `zmod-ember`
+  * [#14](https://github.com/NullVoxPopuli/zmod-ember/pull/14) chore: refresh outdated runtime and toolchain dependencies ([@Copilot](https://github.com/apps/copilot-swe-agent))
+
+#### Committers: 1
+- Copilot [Bot] ([@copilot-swe-agent](https://github.com/apps/copilot-swe-agent))
+
 ## Release (2026-04-21)
 
 * zmod-ember 0.3.1 (patch)
